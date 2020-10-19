@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.david.codec.R;
+import com.david.codec.camera2.Camera2RecordActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -46,6 +47,11 @@ public class MenuActivity extends AppCompatActivity {
 
     public void startMP4Record(View view) {
         Intent intent=new Intent(this,Mp4Activity.class);
+        startActivity(intent);
+    }
+
+    public void startCamera2(View view) {
+        Intent intent=new Intent(this, Camera2RecordActivity.class);
         startActivity(intent);
     }
 }

@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".camera2.Camera2RecordActivity"></activity>
         <activity android:name=".activity.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Mp4Activity"/>
-        <activity android:name=".activity.H264Activity"/>
-        <activity android:name=".activity.AACActivity"/>
+        <activity android:name=".activity.Mp4Activity" />
+        <activity android:name=".activity.H264Activity" />
+        <activity android:name=".activity.AACActivity" />
     </application>
 
 </manifest>
