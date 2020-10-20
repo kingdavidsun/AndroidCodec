@@ -48,7 +48,7 @@ public class Camera2RecordActivity extends AppCompatActivity implements Camera2U
         mSurfaceView=findViewById(R.id.surface_view);
         mBtnRecord=findViewById(R.id.btn_record);
         mCamera2Util=new Camera2Util(this,mSurfaceView);
-        mH264Recorder=new H264Recorder(new VideoInfo());
+        mH264Recorder=new H264Recorder(new VideoInfo(720,1280,25));
         mCamera2Util.setOnPreviewListener(this);
         mBtnRecord.setOnClickListener(new View.OnClickListener() {
             @Override

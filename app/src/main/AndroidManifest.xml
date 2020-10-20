@@ -16,7 +16,6 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
         <activity android:name=".camera2.Camera2RecordActivity"
-            android:screenOrientation="landscape"
             ></activity>
         <activity android:name=".activity.MenuActivity">
             <intent-filter>
