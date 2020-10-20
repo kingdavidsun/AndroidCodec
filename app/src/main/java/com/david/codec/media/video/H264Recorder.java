@@ -63,18 +63,19 @@ public class H264Recorder {
         //准备Video
         this.width = mVideoInfo.getWidth();
         this.height = mVideoInfo.getHeight();
-        if (CodecUtil.isH265EncoderSupport()){
-            videoMime="video/hevc";
-        }else{
-            videoMime="video/avc";
-        }
+//        if (CodecUtil.isH265EncoderSupport()){
+//            videoMime="video/hevc";
+//        }else{
+//            videoMime="video/avc";
+//        }
+        videoMime="video/avc";
         Log.i(TAG, "videoMime: "+videoMime);
         MediaFormat videoFormat = MediaFormat.createVideoFormat(videoMime, width, height);
         videoFormat.setInteger(MediaFormat.KEY_BIT_RATE, mVideoInfo.getVideoRate());
         videoFormat.setInteger(MediaFormat.KEY_FRAME_RATE, mVideoInfo.getFrameRate());
         videoFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, mVideoInfo.getFrameInterval());
         colorFormat = checkColorFormat(videoMime);
-        Log.i(TAG, ": "+colorFormat);
+        Log.i(TAG, "colorFormat: "+colorFormat);
         videoFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, colorFormat);
         mVideoEnc = MediaCodec.createEncoderByType(videoMime);
         mVideoEnc.configure(videoFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);

@@ -13,8 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".camera2.Camera2RecordActivity"></activity>
+        <activity android:name=".camera2.Camera2RecordActivity"
+            android:screenOrientation="landscape"
+            ></activity>
         <activity android:name=".activity.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

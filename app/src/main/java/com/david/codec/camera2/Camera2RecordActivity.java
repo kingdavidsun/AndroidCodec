@@ -71,4 +71,10 @@ public class Camera2RecordActivity extends AppCompatActivity implements Camera2U
             mH264Recorder.feedData(data);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCamera2Util.releaseCamera();
+    }
 }

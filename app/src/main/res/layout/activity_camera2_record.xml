@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".camera2.Camera2RecordActivity">
-    <SurfaceView
+    <com.david.codec.camera2.AutoFitSurfaceView
         android:id="@+id/surface_view"
-        android:layout_width="480dp"
-        android:layout_height="640dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_record"
