@@ -132,4 +132,24 @@ public class YUVUtil {
         }
         return data;
     }
+
+    // NV21或NV12顺时针旋转90度
+    public static void rotateSP90(byte[] src, byte[] dest, int w, int h) {
+        int pos = 0;
+        int k = 0;
+        for (int i = 0; i <= w - 1; i++) {
+            for (int j = h - 1; j >= 0; j--) {
+                dest[k++] = src[j * w + i];
+            }
+        }
+
+        pos = w * h;
+        for (int i = 0; i <= w - 2; i += 2) {
+            for (int j = h / 2 - 1; j >= 0; j--) {
+                dest[k++] = src[pos + j * w + i];
+                dest[k++] = src[pos + j * w + i + 1];
+            }
+        }
+    }
+
 }

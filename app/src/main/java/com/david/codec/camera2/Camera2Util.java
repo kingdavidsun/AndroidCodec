@@ -36,7 +36,7 @@ public class Camera2Util implements SurfaceHolder.Callback {
     private static final String TAG = "Camera2Util";
     // camera相关对象
     private int mCameraId = CameraCharacteristics.LENS_FACING_FRONT; // 要打开的摄像头ID
-    private Size mPreviewSize = new Size(720, 1280); // 固定640*480演示
+    private Size mPreviewSize = new Size(1280, 720); // 固定640*480演示
     CameraManager mCameraManager;
     private CameraDevice mCameraDevice; // 相机对象
     private CameraCaptureSession mCaptureSession;
@@ -72,7 +72,7 @@ public class Camera2Util implements SurfaceHolder.Callback {
             Log.d(TAG, "preview size: " + mPreviewSize.getWidth() + "*" + mPreviewSize.getHeight());
             //创建ImageReader获取YUV数据
             mImageReader = ImageReader.newInstance(mPreviewSize.getWidth(), mPreviewSize.getHeight(),
-                    ImageFormat.YUV_420_888, 2);
+                    ImageFormat.YUV_420_888, 1);
             mImageReader.setOnImageAvailableListener(mOnImageAvailableListener, null);
             // 打开摄像头
             mCameraManager.openCamera(Integer.toString(mCameraId),mStateCallback,mBackgroundHandler);
@@ -82,16 +82,18 @@ public class Camera2Util implements SurfaceHolder.Callback {
     }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        Log.i(TAG, "surfaceCreated: ");
         openCamera();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        Log.i(TAG, "surfaceChanged: ");
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        Log.i(TAG, "surfaceDestroyed: ");
         releaseCamera();
     }
 
@@ -128,9 +130,12 @@ public class Camera2Util implements SurfaceHolder.Callback {
             }
             byte[] dataByte = YUVUtil.getDataFromImage(image,COLOR_FormatNV21);
 //            Log.i(TAG, "onImageAvailable: "+dataByte.length);
+            //旋转90度
+            byte[] rotateData=new byte[dataByte.length];
+            YUVUtil.rotateSP90(dataByte,rotateData,1280,720);
             if (mOnPreviewListener!=null){
 
-                mOnPreviewListener.onPreView(dataByte);
+                mOnPreviewListener.onPreView(rotateData);
             }
             // 一定不能忘记close
             image.close();

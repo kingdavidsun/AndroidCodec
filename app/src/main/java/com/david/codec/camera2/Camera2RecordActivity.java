@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.david.codec.R;
@@ -46,6 +48,22 @@ public class Camera2RecordActivity extends AppCompatActivity implements Camera2U
     }
     private void initView() {
         mSurfaceView=findViewById(R.id.surface_view);
+        //自定义view的高度
+        mSurfaceView.post(new Runnable() {
+            @Override
+            public void run() {
+                int orientation = Camera2RecordActivity.this.getResources().getConfiguration().orientation;
+                if (orientation== Configuration.ORIENTATION_PORTRAIT) {
+                    //竖屏宽高为：3:4
+                    int measuredWidth = mSurfaceView.getMeasuredWidth();
+                    ViewGroup.LayoutParams layoutParams = mSurfaceView.getLayoutParams();
+                    layoutParams.height = measuredWidth * 4 / 3;
+                    mSurfaceView.setLayoutParams(layoutParams);
+                }else{
+
+                }
+            }
+        });
         mBtnRecord=findViewById(R.id.btn_record);
         mCamera2Util=new Camera2Util(this,mSurfaceView);
         mH264Recorder=new H264Recorder(new VideoInfo(720,1280,25));
