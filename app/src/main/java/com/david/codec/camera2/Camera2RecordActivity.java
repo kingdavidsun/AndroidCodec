@@ -57,7 +57,7 @@ public class Camera2RecordActivity extends AppCompatActivity implements Camera2U
                     //竖屏宽高为：3:4
                     int measuredWidth = mSurfaceView.getMeasuredWidth();
                     ViewGroup.LayoutParams layoutParams = mSurfaceView.getLayoutParams();
-                    layoutParams.height = measuredWidth * 4 / 3;
+                    layoutParams.height = measuredWidth * 16 / 9;
                     mSurfaceView.setLayoutParams(layoutParams);
                 }else{
 

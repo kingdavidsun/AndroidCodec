@@ -36,7 +36,7 @@ public class Camera2Util implements SurfaceHolder.Callback {
     private static final String TAG = "Camera2Util";
     // camera相关对象
     private int mCameraId = CameraCharacteristics.LENS_FACING_FRONT; // 要打开的摄像头ID
-    private Size mPreviewSize = new Size(1280, 720); // 固定640*480演示
+    private Size mPreviewSize = new Size(720, 1280); // 固定640*480演示
     CameraManager mCameraManager;
     private CameraDevice mCameraDevice; // 相机对象
     private CameraCaptureSession mCaptureSession;

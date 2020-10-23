@@ -16,6 +16,7 @@ public class FileUtils {
     public static final String H264_FOLDER= Environment.getExternalStorageDirectory()+"/david/h264/";
     public static final String AAC_FOLDER= Environment.getExternalStorageDirectory()+"/david/aac/";
     public static final String MP4_FOLDER= Environment.getExternalStorageDirectory()+"/david/mp4/";
+    public static final String YUV_FOLDER= Environment.getExternalStorageDirectory()+"/david/yuv/";
     public static void writeData(byte[]data,String parentPath,String fileName){
         File parent=new File(parentPath);
         if (!parent.exists()){
